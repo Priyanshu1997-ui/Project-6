@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/windows%2010/.ipynb_checkpoints/Project6%20%281%29/mlruns/884183150395907031/67b039b8de4c46239701c34a34995127/artifacts
+end_time: 1749662445909
+entry_point_name: ''
+experiment_id: '884183150395907031'
+lifecycle_stage: active
+run_id: 67b039b8de4c46239701c34a34995127
+run_name: lstm_sales_forecasting
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749662377410
+status: 3
+tags: []
+user_id: windows 10

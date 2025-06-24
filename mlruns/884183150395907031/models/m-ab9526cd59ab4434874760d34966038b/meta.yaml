@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/windows%2010/.ipynb_checkpoints/Project6%20%281%29/mlruns/884183150395907031/models/m-ab9526cd59ab4434874760d34966038b/artifacts
+creation_timestamp: 1749904069283
+experiment_id: '884183150395907031'
+last_updated_timestamp: 1749904102743
+model_id: m-ab9526cd59ab4434874760d34966038b
+model_type: null
+name: lstm_model
+source_run_id: 163e49276448473aba3c9a0ff8b14f1b
+status: 2
+status_message: null

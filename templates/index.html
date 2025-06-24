@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Prediction App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-image: url('/static/images/cloth_store.jpg');
+      
+
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      color: #333;
+    }
+
+    .overlay {
+      background: rgba(255, 255, 255, 0.88); /* Transparent white background */
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #002B5B;
+      color: #fff;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h1 {
+      font-size: 22px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 15px;
+    }
+
+    .main {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-card {
+      background: #ffffffd9;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .form-card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #002B5B;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 5px;
+      font-size: 15px;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .output-section {
+      margin-top: 30px;
+      padding: 30px;
+      background-color: #ffffffd9;
+      border-left: 5px solid #007bff;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 22px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin: 30px auto 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="sidebar">
+      <h1>Sales Predictor</h1>
+      <p>📊 AI-powered tool to forecast sales based on store info.</p>
+    </div>
+
+    <div class="main">
+      <div class="form-card">
+        <h2>📝 Enter Store Information</h2>
+        <form action="/predict" method="post">
+
+          <label for="Store">Store ID</label>
+          <input type="number" name="Store" required>
+
+          <label for="Promo">Promo</label>
+          <select name="Promo" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+
+          <label for="SchoolHoliday">School Holiday</label>
+          <select name="SchoolHoliday" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+
+          <label for="StoreType">Store Type</label>
+          <select name="StoreType" required>
+            <option value="1">Type A</option>
+            <option value="2">Type B</option>
+            <option value="3">Type C</option>
+            <option value="4">Type D</option>
+          </select>
+
+          <label for="Assortment">Assortment</label>
+          <select name="Assortment" required>
+            <option value="1">Basic</option>
+            <option value="2">Extra</option>
+            <option value="3">Extended</option>
+          </select>
+
+          <label for="CompetitionDistance">Competition Distance</label>
+          <input type="number" name="CompetitionDistance" required>
+
+          <label for="Promo2">Promo2</label>
+          <select name="Promo2" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+
+          <label for="Month">Month</label>
+          <input type="number" name="Month" min="1" max="12" required>
+
+          <label for="DayOfWeek">Day of Week</label>
+          <select name="DayOfWeek" required>
+            <option value="0">Monday</option>
+            <option value="1">Tuesday</option>
+            <option value="2">Wednesday</option>
+            <option value="3">Thursday</option>
+            <option value="4">Friday</option>
+            <option value="5">Saturday</option>
+            <option value="6">Sunday</option>
+          </select>
+
+          <label for="IsWeekend">Is Weekend</label>
+          <select name="IsWeekend" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+
+          <input type="submit" value="🔮 Predict Sales">
+        </form>
+      </div>
+
+      <div class="output-section">
+        {% if prediction %}
+          <p><strong>Predicted Sales: ₹ {{ prediction }}</strong></p>
+        {% else %}
+          <p>Prediction will appear here after submission.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
